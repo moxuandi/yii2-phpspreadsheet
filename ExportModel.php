@@ -39,7 +39,7 @@ class ExportModel extends Widget
      */
     public $headers = [];
     /**
-     * @var boolean 是否在一个 Excel 中导出多个工作表.
+     * @var bool 是否在一个 Excel 中导出多个工作表.
      * 此属性为`true`时, `$models`应该是一个二维数组, 每个子数组表示一个工作表的数据;
      * `$columns`和`$headers`应该是一个二维数组, 每个子数组的键必须是`$models`中子数组的键.
      * `$sheetTitle`应该是一个一维数组, 每个元素的键必须是`$data`中子数组的键.
@@ -61,7 +61,7 @@ class ExportModel extends Widget
 
     /**
      * 导出操作
-     * @return boolean|string
+     * @return bool|string
      * @throws \PhpOffice\PhpSpreadsheet\Exception
      * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
      * @throws \yii\base\Exception

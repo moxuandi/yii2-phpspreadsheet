@@ -25,11 +25,11 @@ class ImportFile extends Widget
      */
     public $file;
     /**
-     * @var boolean 是否将 Excel 文件中的第一行记录设置为每行数据的键; 为`false`时将使用字母列(eg: A,B,C).
+     * @var bool 是否将 Excel 文件中的第一行记录设置为每行数据的键; 为`false`时将使用字母列(eg: A,B,C).
      */
     public $setFirstRecordAsKeys = true;
     /**
-     * @var boolean 如果 Excel 文件中有多个工作表, 是否以表名(eg:sheet1,sheet2)作为键名; 为 false 时使用数字(eg:0,1,2).
+     * @var bool 如果 Excel 文件中有多个工作表, 是否以表名(eg:sheet1,sheet2)作为键名; 为 false 时使用数字(eg:0,1,2).
      */
     public $setIndexSheetByName = true;
     /**
@@ -114,7 +114,7 @@ class ImportFile extends Widget
     /**
      * 解决导入时无法返回数组的错误.
      * @param array $config
-     * @return string
+     * @return array
      */
     public static function widget($config = [])
     {

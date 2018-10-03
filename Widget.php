@@ -10,8 +10,7 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
  * @link  http://www.zhangmoxuan.com
  * @QQ  1104984259
  * @Date  2018-9-15
- * @see http://phpexcel.codeplex.com/
- * @see https://github.com/moonlandsoft/yii2-phpexcel
+ * @see https://github.com/PHPOffice/PhpSpreadsheet
  *
  * @property string $format Excel 的版本
  */
@@ -28,18 +27,18 @@ class Widget extends \yii\base\Widget
      */
     public $sheetTitle = 'Worksheet';
     /**
-     * @var boolean 是否在一个 Excel 中导出多个工作表.
+     * @var bool 是否在一个 Excel 中导出多个工作表.
      * 此属性为`true`时, `$data`应该是一个三维数组, 每个子二维数组表示一个工作表的数据;
      * `$headers`应该是一个二维数组, 每个子数组的键必须是`$data`中子二维数组的键.
      * `$sheetTitle`应该是一个一维数组, 每个元素的键必须是`$data`中子二维数组的键.
      */
     public $isMultipleSheet = false;
     /**
-     * @var boolean 是否在第一行设置标题行.
+     * @var bool 是否在第一行设置标题行.
      */
     public $setFirstTitle = true;
     /**
-     * @var boolean 是否下载导出结果; 为`false`时仅保存结果到服务器.
+     * @var bool 是否下载导出结果; 为`false`时仅保存结果到服务器.
      */
     public $asAttachment = true;
     /**
@@ -88,7 +87,7 @@ class Widget extends \yii\base\Widget
     protected function getFormat()
     {
         $pathinfo = pathinfo($this->fileName);
-        $extensionType = 'Excel2007';
+        $extensionType = 'Xlsx';
         if(($extension = ArrayHelper::getValue($pathinfo, 'extension')) !== null){
             switch(strtolower($extension)){
                 case 'xlsx': // Excel (OfficeOpenXML) Spreadsheet
