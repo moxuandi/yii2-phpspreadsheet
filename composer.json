@@ -1,0 +1,22 @@
+{
+    "name": "moxuandi/yii2-phpspreadsheet",
+    "description": "用于读写电子表格文件的纯PHP库",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","Excel","表格","导入","导出"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "moxuandi",
+            "email": "1104984259@qq.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.6",
+        "PHPOffice/PhpSpreadsheet": "~1.4.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "moxuandi\\phpSpreadsheet\\": ""
+        }
+    }
+}
