@@ -149,16 +149,10 @@ ExportModel::widget([
 -----
 ```
 // 导入一个 Excel 文件
-$data = ImportFile::widget([
-    'file' => 'uploads/excel/excel.xls',
-    'setFirstRecordAsKeys' => false,  // 是否将 Excel 文件中的第一行记录设置为每行数据的键
-]);
+ImportFile::getData('uploads/excel/excel.xls', false);
 
 // 导入一个多表 Excel 文件中指定的一个工作表
-$data = ImportFile::widget([
-    'file' => 'uploads/excel/excel2.xls',
-    'setIndexSheetByName' => false,  // 如果 Excel 文件中有多个工作表, 是否以表名(eg:sheet1,sheet2)作为键名
-    'getOnlySheet' => 'Worksheet',  // 指定一个工作表
-    'getOnlySheet' => ['Worksheet', 'Worksheet (2)'],  // 指定多个工作表
-]);
+ImportFile::getData('uploads/excel/excel2.xls', false, true, 'sheet1');
+ImportFile::getData('uploads/excel/excel2.xls', false, true, ['sheet2', 'sheet3']);
+ImportFile::getData('uploads/excel/excel2.xls', false, false, [1, 2]);  // 索引从0开始
 ```
