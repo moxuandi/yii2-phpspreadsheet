@@ -1,8 +1,8 @@
 <?php
 namespace moxuandi\phpSpreadsheet;
 
-use yii\helpers\ArrayHelper;
 use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Reader\Csv;
 
 /**
  * 基于 PhpSpreadsheet, 用于读取 Excel 表格的内容.
@@ -30,7 +30,13 @@ class ImportFile
      */
     public static function getData($file, $setFirstRecordAsKeys = true, $setIndexSheetByName = true, $getOnlySheet = false)
     {
-        $spreadsheet = IOFactory::load($file);  // 载入 Excel 表格
+        $ext = strtolower(substr($file, strrpos($file, '.') + 1));  // 文件扩展名
+        if($ext == "csv"){
+            $reader = new Csv();
+            $spreadsheet = $reader->setInputEncoding("GBK")->load($file);  // 不设置将导致中文列内容返回boolean(false)或乱码
+        }else{
+            $spreadsheet = IOFactory::load($file);  // 载入 Excel 表格
+        }
         $sheetCount = $spreadsheet->getSheetCount();  // 获取 Excel 中工作表的数量
         $sheetData = [];
         if(is_string($getOnlySheet)){
@@ -71,7 +77,7 @@ class ImportFile
      */
     public static function setFirstRecordAsLabel($sheetData)
     {
-        $keys = ArrayHelper::remove($sheetData, 1);  // 从数组移除第一行并返回该行的值
+        $keys = array_shift($sheetData);  // 从数组移除第一行并返回该行的值(会重置原数组的下标)
         $newData = [];
         foreach($sheetData as $data){
             $newData[] = array_combine($keys, $data);  // 合并两个数组来创建一个新数组, $keys为键名, $v为键值
